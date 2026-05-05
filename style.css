@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #07070f;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+
+a {
+  color: #00d9ff;
+  text-decoration: none;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(139, 92, 246, 0.35), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(0, 217, 255, 0.22), transparent 35%),
+    #07070f;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+.nav-links a:hover {
+  color: #00d9ff;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 150px auto 0;
+  text-align: center;
+}
+
+.hero-content h2 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  max-width: 700px;
+  margin: 0 auto 32px;
+  color: #d1d5db;
+  font-size: 1.1rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8b5cf6, #00d9ff);
+  color: #050508;
+  font-weight: bold;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+}
+
+.dark-card,
+.job-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+}
+
+.dark-card {
+  padding: 48px 32px;
+}
+
+.job-card {
+  padding: 28px;
+  margin-top: 24px;
+}
+
+.job-card ul {
+  padding-left: 22px;
+}
+
+footer {
+  text-align: center;
+  padding: 32px;
+  color: #9ca3af;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .hero-content {
+    margin-top: 100px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+}
