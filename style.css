@@ -196,7 +196,7 @@ a:hover {
 .logo img {
   display: block;
   width: auto;
-  height: 280px;
+  height: 360px;
   border-radius: 16px;
   transform-origin: center;
   animation:
@@ -294,7 +294,7 @@ a:hover {
 }
 
 .navbar.navbar-scrolled .logo img {
-  height: 92px;
+  height: 184px;
   border-radius: 12px;
   animation-play-state: paused;
 }
@@ -1403,7 +1403,7 @@ a:hover {
   z-index: 2500;
   opacity: 1;
   transform: translate3d(-100px, -100px, 0);
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  transition: opacity 0.2s ease;
 }
 
 .cursor-dot {
@@ -1422,7 +1422,7 @@ a:hover {
   border-radius: 50%;
   border: 1.5px solid rgba(68, 251, 255, 0.6);
   box-shadow: inset 0 0 10px rgba(68, 251, 255, 0.12), 0 0 20px rgba(68, 251, 255, 0.2);
-  transition: opacity 0.2s ease, width 0.18s ease, height 0.18s ease, margin 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: opacity 0.2s ease, width 0.12s ease, height 0.12s ease, margin 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
 }
 
 body.cursor-hidden .cursor-dot,
@@ -2069,7 +2069,7 @@ body.page-exit {
   }
 
   .navbar.navbar-scrolled .logo img {
-    height: 68px;
+    height: 124px;
   }
 
   .navbar.navbar-scrolled .logo-name {
@@ -2103,7 +2103,7 @@ body.page-exit {
   }
 
   .logo img {
-    height: 164px;
+    height: 210px;
   }
 
   .logo-name {
@@ -2173,7 +2173,7 @@ body.page-exit {
   }
 
   .logo img {
-    height: 128px;
+    height: 156px;
   }
 
   .logo-name {

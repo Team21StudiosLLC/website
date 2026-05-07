@@ -29,10 +29,10 @@
     }
 
     window.addEventListener('load', function () {
-      setTimeout(hideLoader, 420);
+      setTimeout(hideLoader, 1800);
     }, { once: true });
 
-    setTimeout(hideLoader, 2600);
+    setTimeout(hideLoader, 5200);
   }
 
   function setupStickyNavbar() {
@@ -403,8 +403,8 @@
     var ringY = targetY;
 
     function tick() {
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
+      ringX += (targetX - ringX) * 0.52;
+      ringY += (targetY - ringY) * 0.52;
       ring.style.transform = 'translate3d(' + ringX + 'px,' + ringY + 'px,0)';
       requestAnimationFrame(tick);
     }
