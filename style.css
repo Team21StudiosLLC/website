@@ -320,6 +320,42 @@ a:hover {
   border-top-color: rgba(68, 251, 255, 0.16);
 }
 
+@media (min-width: 769px) {
+  .navbar.navbar-scrolled {
+    padding: 8px 16px;
+    min-height: 74px;
+    overflow: visible;
+  }
+
+  .navbar.navbar-scrolled .logo {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .navbar.navbar-scrolled .logo-name {
+    display: none;
+  }
+
+  .navbar.navbar-scrolled .nav-links {
+    width: auto;
+    margin: 0 0 0 224px;
+    padding: 0;
+    border-top: none;
+    gap: 16px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .navbar.navbar-scrolled .nav-links a {
+    font-size: 0.76rem;
+    letter-spacing: 1.2px;
+    padding-bottom: 3px;
+  }
+}
+
 .nav-links a {
   color: var(--text-secondary);
   font-weight: 600;
