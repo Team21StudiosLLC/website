@@ -1,4 +1,40 @@
 ﻿(function () {
+  function setupLoadingIntro() {
+    var body = document.body;
+    if (!body) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (sessionStorage.getItem('t21s-loader-seen') === '1') return;
+
+    var loader = document.createElement('div');
+    loader.className = 'site-loader';
+    loader.setAttribute('aria-hidden', 'true');
+    loader.innerHTML =
+      '<div class="site-loader-core">' +
+      '<img src="assets/T21S_logo_final.svg" alt="" />' +
+      '<p>Initializing Nexus Systems</p>' +
+      '</div>';
+
+    body.classList.add('is-loading');
+    body.appendChild(loader);
+
+    function hideLoader() {
+      if (!loader || loader.classList.contains('is-hiding')) return;
+      loader.classList.add('is-hiding');
+      sessionStorage.setItem('t21s-loader-seen', '1');
+      setTimeout(function () {
+        if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+        body.classList.remove('is-loading');
+      }, 560);
+    }
+
+    window.addEventListener('load', function () {
+      setTimeout(hideLoader, 420);
+    }, { once: true });
+
+    setTimeout(hideLoader, 2600);
+  }
+
   function setupStickyNavbar() {
     var navbar = document.querySelector('.navbar');
     if (!navbar) return;
@@ -308,10 +344,155 @@
     });
   }
 
+  function setupUpdateTicker() {
+    var heroes = document.querySelectorAll('.hero');
+    if (!heroes.length) return;
+
+    var items = [
+      'Nexulum demo is live now on itch.io',
+      'New devlog and media drops are rolling out regularly',
+      'Open to select contract collaborators in design and engineering',
+      'Follow progress from prototype to full launch'
+    ];
+
+    heroes.forEach(function (hero) {
+      var nav = hero.querySelector('.navbar');
+      if (!nav || hero.querySelector('.update-ticker')) return;
+
+      var ticker = document.createElement('div');
+      ticker.className = 'update-ticker';
+      ticker.setAttribute('role', 'status');
+      ticker.setAttribute('aria-label', 'Featured studio updates');
+
+      var track = document.createElement('div');
+      track.className = 'update-ticker-track';
+
+      items.concat(items).forEach(function (text) {
+        var item = document.createElement('span');
+        item.className = 'update-ticker-item';
+        item.textContent = text;
+        track.appendChild(item);
+      });
+
+      ticker.appendChild(track);
+      nav.insertAdjacentElement('afterend', ticker);
+    });
+  }
+
+  function setupInteractiveCursor() {
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var body = document.body;
+    if (!body) return;
+
+    var ring = document.createElement('div');
+    var dot = document.createElement('div');
+    ring.className = 'cursor-ring';
+    dot.className = 'cursor-dot';
+    ring.setAttribute('aria-hidden', 'true');
+    dot.setAttribute('aria-hidden', 'true');
+    body.appendChild(ring);
+    body.appendChild(dot);
+
+    body.classList.add('custom-cursor-enabled', 'cursor-hidden');
+
+    var targetX = window.innerWidth * 0.5;
+    var targetY = window.innerHeight * 0.5;
+    var ringX = targetX;
+    var ringY = targetY;
+
+    function tick() {
+      ringX += (targetX - ringX) * 0.18;
+      ringY += (targetY - ringY) * 0.18;
+      ring.style.transform = 'translate3d(' + ringX + 'px,' + ringY + 'px,0)';
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+
+    document.addEventListener('mousemove', function (event) {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      dot.style.transform = 'translate3d(' + targetX + 'px,' + targetY + 'px,0)';
+      body.classList.remove('cursor-hidden');
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function () {
+      body.classList.add('cursor-hidden');
+    });
+
+    document.addEventListener('mouseenter', function () {
+      body.classList.remove('cursor-hidden');
+    });
+
+    document.addEventListener('mouseover', function (event) {
+      var interactive = event.target.closest(
+        'a, button, input, textarea, select, [role="button"], .about-card, .feature, .media-frame img, .class-card, .devlog-filter-button'
+      );
+      body.classList.toggle('cursor-hover', !!interactive);
+    });
+
+    document.addEventListener('mousedown', function () {
+      body.classList.add('cursor-down');
+    });
+
+    document.addEventListener('mouseup', function () {
+      body.classList.remove('cursor-down');
+    });
+  }
+
+  function setupParallaxDepth() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var layers = document.querySelectorAll(
+      '.hero-content .hero-badge, .hero-content h2, .hero-content p, .hero-content .button-group, .page-title-wrap, .featured-content, .about-grid, .media-layout, .devlog-grid, .careers-grid, .footer-content'
+    );
+    if (!layers.length) return;
+
+    var speeds = [0.03, 0.045, 0.025, 0.04, 0.02, 0.03, 0.022];
+    var ticking = false;
+
+    layers.forEach(function (layer, index) {
+      layer.classList.add('parallax-layer');
+      layer.setAttribute('data-parallax-speed', String(speeds[index % speeds.length]));
+    });
+
+    function update() {
+      var viewportH = window.innerHeight || document.documentElement.clientHeight;
+
+      layers.forEach(function (layer) {
+        var rect = layer.getBoundingClientRect();
+        if (rect.bottom < -140 || rect.top > viewportH + 140) return;
+
+        var speed = parseFloat(layer.getAttribute('data-parallax-speed')) || 0.02;
+        var distanceFromCenter = rect.top + rect.height * 0.5 - viewportH * 0.5;
+        var offset = Math.max(-42, Math.min(42, -distanceFromCenter * speed));
+        layer.style.setProperty('--parallax-shift', offset.toFixed(2) + 'px');
+      });
+
+      ticking = false;
+    }
+
+    function queueUpdate() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener('scroll', queueUpdate, { passive: true });
+    window.addEventListener('resize', queueUpdate);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    setupLoadingIntro();
     setupStickyNavbar();
     setupMobileNav();
     setupScrollReveal();
+    setupUpdateTicker();
+    setupInteractiveCursor();
+    setupParallaxDepth();
     setupMediaLightbox();
     setupDevlogFilters();
     setupClassCardFlip();
