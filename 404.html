@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found | Team 21 Studios</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/T21S_logo_final.svg" type="image/svg+xml" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SCTEXW3W62"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SCTEXW3W62');
+  </script>
+  <script src="script.js" defer></script>
+  <style>
+    .error-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+    }
+    .error-code {
+      font-size: clamp(5rem, 18vw, 12rem);
+      font-weight: 900;
+      line-height: 1;
+      background: var(--grad-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(68, 251, 255, 0.2));
+      margin-bottom: 8px;
+    }
+    .error-title {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .error-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true"></div>
+
+  <main class="error-hero">
+    <a class="logo" href="index.html" aria-label="Team 21 Studios home" style="flex-direction:column; gap:8px; margin-bottom:48px;">
+      <img src="assets/T21S_logo_final.svg" alt="Team 21 Studios logo" style="height:72px;" />
+      <span class="logo-name">Team 21 Studios LLC</span>
+    </a>
+
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-desc">
+      The page you are looking for doesn&apos;t exist or may have been moved.
+      Head back to the homepage to find what you need.
+    </p>
+
+    <div class="button-group">
+      <a class="button button-primary" href="index.html">Back to Home</a>
+      <a class="button button-secondary" href="games.html">View Our Games</a>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top:0;">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Team 21 Studios LLC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

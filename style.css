@@ -1408,12 +1408,12 @@ a:hover {
    ============================================ */
 .reveal-item {
   opacity: 0;
-  transform: translateY(24px) scale(0.985);
-  filter: blur(4px);
+  transform: translateY(14px) scale(0.99);
+  filter: blur(2px);
   transition:
-    opacity 0.6s ease,
-    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 0.6s ease;
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.35s ease;
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -1487,6 +1487,289 @@ body.lightbox-open {
   color: var(--accent);
   font-size: 1.3rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(68, 251, 255, 0.14);
+  border-color: var(--accent);
+}
+
+.image-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid rgba(68, 251, 255, 0.35);
+  background: rgba(8, 5, 26, 0.85);
+  color: var(--accent);
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  line-height: 1;
+}
+
+.image-lightbox-nav:hover {
+  background: rgba(68, 251, 255, 0.14);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(68, 251, 255, 0.25);
+}
+
+.image-lightbox-nav:disabled {
+  opacity: 0.2;
+  cursor: default;
+  pointer-events: none;
+}
+
+.image-lightbox-nav.prev { left: 18px; }
+.image-lightbox-nav.next { right: 18px; }
+
+@media (max-width: 600px) {
+  .image-lightbox-nav { display: none; }
+}
+
+/* ============================================
+   PAGE TRANSITION
+   ============================================ */
+@keyframes pageExitAnim {
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+body.page-exit {
+  animation: pageExitAnim 0.22s ease forwards;
+  pointer-events: none;
+}
+
+/* ============================================
+   PARTICLE CANVAS
+   ============================================ */
+#hero-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   PINNED DEVLOG CARD
+   ============================================ */
+.devlog-pinned {
+  padding: 32px 32px 32px 44px;
+  background: linear-gradient(135deg, rgba(100, 0, 251, 0.1), rgba(62, 61, 255, 0.07));
+  border: 1px solid rgba(68, 251, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.devlog-pinned::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 0 14px rgba(68, 251, 255, 0.55);
+}
+
+.devlog-pinned:hover {
+  border-color: rgba(68, 251, 255, 0.5);
+  box-shadow: 0 12px 48px rgba(62, 61, 255, 0.18);
+}
+
+.devlog-pin-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.devlog-pin-label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* ============================================
+   CLASS SHOWCASE FLIP CARDS
+   ============================================ */
+.class-showcase {
+  background:
+    radial-gradient(ellipse 65% 55% at 0% 100%, rgba(115, 0, 196, 0.08), transparent 55%),
+    radial-gradient(ellipse 55% 50% at 100% 0%,  rgba(68, 251, 255, 0.06), transparent 55%);
+}
+
+.class-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.class-card {
+  height: 380px;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+}
+
+.class-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+@media (hover: hover) {
+  .class-card:hover .class-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.class-card.flipped .class-card-inner {
+  transform: rotateY(180deg);
+}
+
+.class-card-front,
+.class-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.class-card-front {
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 22px;
+  gap: 4px;
+  backdrop-filter: blur(12px);
+}
+
+.class-card-front img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px 20px 60px;
+  transition: transform 0.4s ease;
+}
+
+.class-card:hover .class-card-front img {
+  transform: scale(1.04);
+}
+
+.class-name-overlay {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+.flip-hint {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.65;
+}
+
+.class-card-back {
+  background: linear-gradient(145deg, rgba(26, 18, 72, 0.97), rgba(62, 61, 255, 0.12));
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  gap: 10px;
+  backdrop-filter: blur(12px);
+}
+
+.class-card-back h3 {
+  color: var(--accent);
+  font-size: 1.3rem;
+  margin-bottom: 2px;
+}
+
+.class-role {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.class-card-back p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.class-stat-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.class-stat-list li {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.class-stat-list li::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
 }
 
 /* ============================================
