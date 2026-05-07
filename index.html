@@ -3,84 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team 21 Studios</title>
+  <title>Team 21 Studios - Independent Game Development</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="ambient-bg" aria-hidden="true"></div>
   <header class="hero">
     <nav class="navbar">
-      <h1 class="logo">Team 21 Studios</h1>
+      <a class="logo" href="index.html" aria-label="Team 21 Studios home">
+        <img src="assets/T21S_logo_final.svg" alt="Team 21 Studios logo" />
+        <span class="logo-name">Team 21 Studios LLC</span>
+      </a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#games">Games</a>
-        <a href="#careers">Open Positions</a>
-        <a href="#contact">Contact</a>
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="games.html">Games</a>
+        <a href="media.html">Media</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
       </div>
     </nav>
 
     <section class="hero-content">
-      <h2>Building worlds, systems, and games worth remembering.</h2>
+      <div class="hero-badge">Crafting Interactive Experiences</div>
+      <h2>Building worlds worth<br><span class="gradient-text">exploring.</span></h2>
       <p>
-        Team 21 Studios is an independent game studio focused on stylish gameplay,
-        immersive worlds, and creative player experiences.
+        Team 21 Studios is an independent game development studio creating
+        stylized, gameplay-first experiences. We combine artistic vision with
+        technical excellence to deliver unforgettable interactive worlds.
       </p>
-      <a class="button" href="#games">View Our Games</a>
-    </section>
-  </header>
-
-  <main>
-    <section id="about" class="section">
-      <h2>About Us</h2>
-      <p>
-        Team 21 Studios is an independent game development studio creating original
-        interactive experiences. We are focused on gameplay-first design, strong visual
-        identity, and building games with long-term passion.
-      </p>
-    </section>
-
-    <section id="games" class="section dark-card">
-      <h2>Our Games</h2>
-      <h3>Nexulum</h3>
-      <p>
-        Nexulum is our current project, a stylized action-focused game built around
-        classes, weapons, runes, progression, and replayable combat.
-      </p>
-      <p>More information coming soon.</p>
-    </section>
-
-    <section id="careers" class="section">
-      <h2>Open Positions</h2>
-      <p>
-        We are interested in working with freelance and contract artists, animators,
-        and other creative developers.
-      </p>
-
-      <div class="job-card">
-        <h3>Freelance / Contract Artists & Animators</h3>
-        <p>We may be looking for help with:</p>
-        <ul>
-          <li>3D character art</li>
-          <li>3D environment art</li>
-          <li>Character animation</li>
-          <li>VFX</li>
-          <li>Concept art</li>
-        </ul>
-        <p>
-          To apply, email your resume, portfolio, availability, and expected rate to:
-        </p>
-        <a href="mailto:careers@team21studios.com">careers@team21studios.com</a>
+      <div class="button-group">
+        <a class="button button-primary" href="games.html">Explore Our Games</a>
+        <a class="button button-secondary" href="contact.html">Get In Touch</a>
       </div>
     </section>
 
-    <section id="contact" class="section dark-card">
-      <h2>Contact</h2>
-      <p>For business inquiries, contact us at:</p>
-      <a href="mailto:contact@team21studios.com">contact@team21studios.com</a>
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Studio Identity -->
+    <section class="section about-section">
+      <div class="section-label">Who We Are</div>
+      <h2>An indie studio built on<br><span class="gradient-text">bold ideas.</span></h2>
+      <p class="section-intro">
+        Team 21 Studios is an independent game development company crafting stylized,
+        gameplay-first experiences. We blend artistic direction with technical depth to
+        build worlds players keep coming back to.
+      </p>
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="card-icon">&#x1F3AE;</span>
+          <h3>Gameplay First</h3>
+          <p>Every mechanic, every system, every screen is designed to feel satisfying to play.</p>
+        </div>
+        <div class="about-card">
+          <span class="card-icon">&#x1F3A8;</span>
+          <h3>Artistic Vision</h3>
+          <p>Strong visual identity runs through every project &#x2014; from UI to world design.</p>
+        </div>
+        <div class="about-card">
+          <span class="card-icon">&#x2699;&#xFE0F;</span>
+          <h3>Technical Depth</h3>
+          <p>Solid engineering ensures our games are polished, stable, and built to last.</p>
+        </div>
+        <div class="about-card">
+          <span class="card-icon">&#x1F501;</span>
+          <h3>Replayability</h3>
+          <p>We design for depth &#x2014; systems that reward mastery and keep players engaged.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current Project Spotlight -->
+    <section class="section featured-game">
+      <div class="section-label">Current Project</div>
+      <h2>Nexulum</h2>
+      <div class="featured-content">
+        <div class="game-showcase">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;border:1px solid var(--card-border);">
+            <iframe
+              src="https://www.youtube.com/embed/R0Y0dgRKFQM"
+              title="Nexulum Official Trailer"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            </iframe>
+          </div>
+        </div>
+        <div class="game-details">
+          <p class="lead-text">
+            Nexulum is a stylized action RPG built around deep class systems, rune-based
+            progression, and high-replayability tactical combat. The demo is available
+            now &#x2014; play it today and follow us for updates on the full release.
+          </p>
+          <div class="features-grid">
+            <div class="feature">
+              <h4>Class Systems</h4>
+              <p>Unique playstyles and progression paths for every type of player.</p>
+            </div>
+            <div class="feature">
+              <h4>Rune Builds</h4>
+              <p>Combine runes to unlock powerful synergies and emergent strategies.</p>
+            </div>
+            <div class="feature">
+              <h4>Tactical Combat</h4>
+              <p>Encounters designed to challenge and reward skillful play.</p>
+            </div>
+            <div class="feature">
+              <h4>Stylized World</h4>
+              <p>A distinctive visual universe with deep atmosphere and lore.</p>
+            </div>
+          </div>
+          <div class="button-group" style="justify-content:flex-start;">
+            <a class="button button-primary" href="https://team-21-studios-llc.itch.io/nexulum" target="_blank" rel="noopener">Play Demo on itch.io</a>
+            <a class="button button-secondary" href="games.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Cards -->
+    <section class="section">
+      <div class="section-label">Explore</div>
+      <h2>Navigate the Studio</h2>
+      <p class="section-intro">
+        Everything you need to know about Team 21 Studios &#x2014; in one place.
+      </p>
+      <div class="about-grid">
+        <a class="about-card" href="about.html">
+          <span class="card-icon">&#x1F3E2;</span>
+          <h3>About Us</h3>
+          <p>Our mission, values, and the philosophy behind every game we build.</p>
+        </a>
+        <a class="about-card" href="games.html">
+          <span class="card-icon">&#x1F579;&#xFE0F;</span>
+          <h3>Games</h3>
+          <p>Dive into Nexulum and see what we're building right now.</p>
+        </a>
+        <a class="about-card" href="media.html">
+          <span class="card-icon">&#x1F4F7;</span>
+          <h3>Media</h3>
+          <p>Brand assets, screenshots, and our visual identity gallery.</p>
+        </a>
+        <a class="about-card" href="careers.html">
+          <span class="card-icon">&#x1F4CB;</span>
+          <h3>Careers</h3>
+          <p>Open freelance and contract roles for talented creators.</p>
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Team 21 Studios. All rights reserved.</p>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Team 21 Studios LLC</h4>
+        <p>Building games worth remembering.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="devlog.html">Devlog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@team21studiosllc.com">contact@team21studiosllc.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Team 21 Studios LLC. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
+

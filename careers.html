@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers - Team 21 Studios</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true"></div>
+  <header class="hero page-hero">
+    <nav class="navbar">
+      <a class="logo" href="index.html" aria-label="Team 21 Studios home">
+        <img src="assets/T21S_logo_final.svg" alt="Team 21 Studios logo" />
+        <span class="logo-name">Team 21 Studios LLC</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="games.html">Games</a>
+        <a href="media.html">Media</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+    <div class="page-title-wrap">
+      <div class="hero-badge">Join Our Team</div>
+      <h1>Work With Team 21 Studios</h1>
+      <p>
+        We are building something real. Join us early and grow with the studio.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section careers-section">
+      <div class="section-label">Open Roles</div>
+      <h2>Current Areas of Interest</h2>
+
+      <!-- Compensation Notice -->
+      <div style="margin-bottom:48px; padding:36px 40px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:20px; backdrop-filter:blur(14px); border-left:3px solid var(--accent);">
+        <h3 style="margin-bottom:16px; font-size:1.05rem;">Revenue-Share &#x2014; A Real Stake in Something Real</h3>
+        <p style="color:var(--text-secondary); line-height:1.75; margin-bottom:14px;">
+          Team 21 Studios is a self-funded, founder-led LLC &#x2014; built from the ground up by
+          the people making the game. We started as a senior capstone group at UNR, won
+          <strong style="color:var(--text-primary);">Best Overall Class Project</strong> at Innovation Day with Nexulum,
+          and incorporated because we knew this was worth seeing through. Every dollar in this
+          studio comes from the founders themselves.
+        </p>
+        <p style="color:var(--text-secondary); line-height:1.75; margin-bottom:14px;">
+          Because of that, all collaborator positions are currently structured as
+          <strong style="color:var(--text-primary);">revenue-share arrangements</strong>. Compensation is tied to the
+          commercial success of the game &#x2014; meaning when Nexulum earns, you earn. Your
+          contribution is not speculative filler work; it becomes part of a title that already
+          has a demo, a trailer, and a growing audience.
+        </p>
+        <p style="color:var(--text-secondary); line-height:1.75; margin-bottom:14px;">
+          What you get from day one: a professional studio environment, full credit on a soon-to-be-shipped
+          commercial title, real production pipeline experience, and a defined revenue-share percentage
+          that is yours to keep. You work alongside founders who are deeply invested &#x2014; financially
+          and personally &#x2014; in making this the best it can be.
+        </p>
+        <p style="color:var(--text-secondary); line-height:1.75; font-size:0.9rem;">
+          This is an early-access seat at a studio with momentum. If you want your work in front
+          of players and your name on something you are genuinely proud of, we want to hear from you.
+        </p>
+      </div>
+
+      <div class="careers-grid">
+        <div class="job-card">
+          <h3>Character Artists</h3>
+          <ul>
+            <li>3D character modeling</li>
+            <li>Rigging and materials</li>
+            <li>Game-ready optimization</li>
+          </ul>
+        </div>
+        <div class="job-card">
+          <h3>Environment Artists</h3>
+          <ul>
+            <li>World building and scene assembly</li>
+            <li>Prop creation and polish</li>
+            <li>Lighting and composition</li>
+          </ul>
+        </div>
+        <div class="job-card">
+          <h3>Animators</h3>
+          <ul>
+            <li>Character movement sets</li>
+            <li>Combat animation</li>
+            <li>Polish and blending</li>
+          </ul>
+        </div>
+        <div class="job-card">
+          <h3>VFX Artists</h3>
+          <ul>
+            <li>Combat and impact effects</li>
+            <li>Shader and particle work</li>
+            <li>Atmospheric effects</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="application-section application-section-plain">
+        <h3>Get In Touch</h3>
+        <p>Send a brief introduction, your portfolio or work samples, and the role you're interested in:</p>
+        <button
+          id="copy-email-btn"
+          onclick="copyEmail()"
+          class="button button-primary"
+          style="cursor:pointer; font-family:inherit; border:none;"
+          aria-label="Copy email address to clipboard"
+        >contact@team21studiosllc.com</button>
+        <span
+          id="copy-confirm"
+          style="display:block; height:20px; margin-top:10px; font-size:0.8rem; color:var(--accent); opacity:0; transition:opacity 0.3s;"
+          aria-live="polite"
+        >&#x2713; Copied to clipboard</span>
+        <p class="apply-note">Subject line: "Collaboration &#x2014; [Your Role]"</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Team 21 Studios LLC</h4>
+        <p>Building games worth remembering.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="devlog.html">Devlog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@team21studiosllc.com">contact@team21studiosllc.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Team 21 Studios LLC. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    function copyEmail() {
+      navigator.clipboard.writeText('contact@team21studiosllc.com').then(function () {
+        var confirm = document.getElementById('copy-confirm');
+        var btn = document.getElementById('copy-email-btn');
+        confirm.style.opacity = '1';
+        btn.style.opacity = '0.75';
+        setTimeout(function () {
+          confirm.style.opacity = '0';
+          btn.style.opacity = '1';
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+</html>
+
