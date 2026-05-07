@@ -196,7 +196,7 @@ a:hover {
 .logo img {
   display: block;
   width: auto;
-  height: 232px;
+  height: 280px;
   border-radius: 16px;
   transform-origin: center;
   animation:
@@ -294,7 +294,7 @@ a:hover {
 }
 
 .navbar.navbar-scrolled .logo img {
-  height: 68px;
+  height: 92px;
   border-radius: 12px;
   animation-play-state: paused;
 }
@@ -2069,7 +2069,7 @@ body.page-exit {
   }
 
   .navbar.navbar-scrolled .logo img {
-    height: 52px;
+    height: 68px;
   }
 
   .navbar.navbar-scrolled .logo-name {
@@ -2103,7 +2103,7 @@ body.page-exit {
   }
 
   .logo img {
-    height: 132px;
+    height: 164px;
   }
 
   .logo-name {
@@ -2173,7 +2173,7 @@ body.page-exit {
   }
 
   .logo img {
-    height: 108px;
+    height: 128px;
   }
 
   .logo-name {
