@@ -4,7 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Devlog - Team 21 Studios</title>
+  <meta name="description" content="Read Team 21 Studios development updates, milestones, and announcements for Nexulum." />
+  <link rel="canonical" href="https://team21studiosllc.com/devlog.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Devlog - Team 21 Studios" />
+  <meta property="og:description" content="Progress updates, milestones, and announcements for Nexulum development." />
+  <meta property="og:url" content="https://team21studiosllc.com/devlog.html" />
+  <meta property="og:image" content="https://team21studiosllc.com/assets/media/team21-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Devlog - Team 21 Studios" />
+  <meta name="twitter:description" content="Progress updates, milestones, and announcements for Nexulum development." />
+  <meta name="twitter:image" content="https://team21studiosllc.com/assets/media/team21-logo.png" />
   <link rel="stylesheet" href="style.css" />
+  <script src="analytics.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div class="ambient-bg" aria-hidden="true"></div>
@@ -14,6 +27,11 @@
         <img src="assets/T21S_logo_final.svg" alt="Team 21 Studios logo" />
         <span class="logo-name">Team 21 Studios LLC</span>
       </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -37,6 +55,12 @@
     <section class="section">
       <div class="section-label">Latest</div>
       <h2>News &amp; Updates</h2>
+      <div class="devlog-filters" aria-label="Filter development updates by category">
+        <button class="devlog-filter-button active" type="button" data-devlog-filter="all" aria-pressed="true">All</button>
+        <button class="devlog-filter-button" type="button" data-devlog-filter="milestone" aria-pressed="false">Milestone</button>
+        <button class="devlog-filter-button" type="button" data-devlog-filter="announcement" aria-pressed="false">Announcement</button>
+        <button class="devlog-filter-button" type="button" data-devlog-filter="development" aria-pressed="false">Development</button>
+      </div>
 
       <!--
         HOW TO ADD A NEW POST:
@@ -50,7 +74,7 @@
       <div class="devlog-grid">
 
         <!-- ── Entry 1 (newest) ─────────────────────────── -->
-        <article class="devlog-entry">
+        <article class="devlog-entry" data-devlog-tag="milestone">
           <div class="devlog-entry-header">
             <span class="devlog-tag">Milestone</span>
             <span class="devlog-date">May 2026</span>
@@ -73,7 +97,7 @@
         </article>
 
         <!-- ── Entry 2 ────────────────────────────────────── -->
-        <article class="devlog-entry">
+        <article class="devlog-entry" data-devlog-tag="announcement">
           <div class="devlog-entry-header">
             <span class="devlog-tag">Announcement</span>
             <span class="devlog-date">May 2026</span>
@@ -90,7 +114,7 @@
         </article>
 
         <!-- ── Entry 3 ────────────────────────────────────── -->
-        <article class="devlog-entry">
+        <article class="devlog-entry" data-devlog-tag="development">
           <div class="devlog-entry-header">
             <span class="devlog-tag">Development</span>
             <span class="devlog-date">May 2026</span>

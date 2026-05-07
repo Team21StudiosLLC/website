@@ -148,6 +148,25 @@ a:hover {
   gap: 20px;
   position: relative;
   z-index: 100;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    padding 0.35s ease;
+}
+
+.navbar.navbar-scrolled {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1200px, calc(100% - 24px));
+  padding: 14px 20px;
+  border: 1px solid rgba(68, 251, 255, 0.25);
+  border-radius: 20px;
+  background: rgba(8, 5, 26, 0.78);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 56px rgba(2, 1, 8, 0.56), 0 0 0 1px rgba(68, 251, 255, 0.07);
 }
 
 .logo {
@@ -220,6 +239,57 @@ a:hover {
   color: var(--text-muted);
 }
 
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(68, 251, 255, 0.26);
+  background: rgba(8, 5, 26, 0.55);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar.nav-open .nav-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar.nav-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar.nav-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.navbar.navbar-scrolled .logo {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.navbar.navbar-scrolled .logo img {
+  height: 68px;
+  border-radius: 12px;
+  animation-play-state: paused;
+}
+
+.navbar.navbar-scrolled .logo-name {
+  font-size: 0.72rem;
+  letter-spacing: 1.6px;
+}
+
 .nav-links {
   display: flex;
   gap: 36px;
@@ -228,6 +298,12 @@ a:hover {
   width: 100%;
   padding: 14px 0 4px;
   border-top: 1px solid rgba(68, 251, 255, 0.1);
+}
+
+.navbar.navbar-scrolled .nav-links {
+  gap: 22px;
+  padding-top: 10px;
+  border-top-color: rgba(68, 251, 255, 0.16);
 }
 
 .nav-links a {
@@ -779,6 +855,16 @@ a:hover {
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.media-frame img {
+  display: block;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.media-frame:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.08);
+}
+
 .logo-frame {
   min-height: 320px;
 }
@@ -873,10 +959,6 @@ a:hover {
 
 .value-item h4 {
   margin-bottom: 8px;
-}
-
-/* Careers Section */
-.careers-section {
 }
 
 .careers-grid {
@@ -1190,6 +1272,39 @@ a:hover {
   margin-top: 48px;
 }
 
+.devlog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  margin-bottom: 26px;
+}
+
+.devlog-filter-button {
+  border: 1px solid rgba(68, 251, 255, 0.25);
+  background: rgba(8, 5, 26, 0.5);
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.devlog-filter-button:hover,
+.devlog-filter-button.active {
+  color: var(--accent);
+  border-color: rgba(68, 251, 255, 0.55);
+  background: rgba(68, 251, 255, 0.08);
+}
+
+.devlog-entry.devlog-hidden {
+  display: none;
+}
+
 .devlog-entry {
   padding: 32px 32px 32px 40px;
   background: var(--card-bg);
@@ -1289,6 +1404,92 @@ a:hover {
 }
 
 /* ============================================
+   SCROLL REVEAL & LIGHTBOX
+   ============================================ */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  filter: blur(4px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.6s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-item.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.lightbox-trigger {
+  cursor: zoom-in;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(5, 3, 15, 0.92);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.image-lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: min(1040px, 94vw);
+}
+
+.image-lightbox img {
+  max-width: min(1040px, 94vw);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(68, 251, 255, 0.3);
+  border-radius: 14px;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.62), 0 0 42px rgba(68, 251, 255, 0.15);
+}
+
+.image-lightbox-caption {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(68, 251, 255, 0.35);
+  background: rgba(8, 5, 26, 0.85);
+  color: var(--accent);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 1024px) {
@@ -1313,14 +1514,51 @@ a:hover {
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px;
     padding: 16px;
   }
 
+  .navbar.navbar-scrolled {
+    top: 8px;
+    width: calc(100% - 16px);
+    padding: 10px 12px;
+  }
+
+  .navbar.navbar-scrolled .logo img {
+    height: 52px;
+  }
+
+  .navbar.navbar-scrolled .logo-name {
+    font-size: 0.62rem;
+    letter-spacing: 1.2px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .nav-links {
-    gap: 20px;
+    gap: 14px;
     font-size: 0.78rem;
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    border-top: none;
+    pointer-events: none;
+    transition: max-height 0.28s ease, opacity 0.28s ease, padding 0.28s ease;
+  }
+
+  .navbar.nav-open .nav-links {
+    max-height: 320px;
+    opacity: 1;
+    padding: 12px 0 4px;
+    border-top: 1px solid rgba(68, 251, 255, 0.14);
+    pointer-events: auto;
   }
 
   .logo img {
@@ -1474,5 +1712,13 @@ a:hover {
   .logo:hover img {
     transform: none;
     animation-play-state: running;
+  }
+
+  .reveal-item,
+  .reveal-item.reveal-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }
